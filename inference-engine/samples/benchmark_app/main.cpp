@@ -450,7 +450,8 @@ int main(int argc, char* argv[]) {
         // Update number of streams
         for (auto&& ds : device_nstreams) {
             const std::string key = ds.first + "_THROUGHPUT_STREAMS";
-            device_nstreams[ds.first] = ie.GetConfig(ds.first, key).as<std::string>();
+             device_nstreams[ds.first] = std::to_string(ie.GetConfig(ds.first, key).as<int>()); 
+	    //device_nstreams[ds.first] = ie.GetConfig(ds.first, key).as<std::string>();
         }
 
         // Number of requests
